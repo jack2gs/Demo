@@ -66,3 +66,15 @@ gulp.task("bundle-test", function(){
         .pipe(buffer())
         .pipe(gulp.dest(__dirname + "/bundled/test/"));
 });
+
+gulp.task("bundle-e2e-test", function(){
+    var b = browserify({
+        standalone: "test",
+        entries: __dirname + "/build/test/e2e.test.js",
+        debug: true
+    });
+    return b.bundle()
+        .pipe(source("e2e.test.js"))
+        .pipe(buffer())
+        .pipe(gulp.dest(__dirname + "/bundled/test/e2e-test"));
+});

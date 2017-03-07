@@ -53,3 +53,16 @@ gulp.task("bundle-source", function(){
         .pipe(buffer())
         .pipe(gulp.dest(__dirname + "/bundled/source/"));
 });
+
+gulp.task("bundle-test", function(){
+    var b = browserify({
+        standalone: "test",
+        entries: __dirname + "/build/test/bdd.test.js",
+        debug: true
+    });
+
+    return b.bundle()
+        .pipe(source("bdd.test.js"))
+        .pipe(buffer())
+        .pipe(gulp.dest(__dirname + "/bundled/test/"));
+});

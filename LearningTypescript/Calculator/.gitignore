@@ -3,3 +3,4 @@ build
 bundled
 node_modules
 typings
+coverage

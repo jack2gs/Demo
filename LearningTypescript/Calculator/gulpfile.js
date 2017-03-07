@@ -78,3 +78,18 @@ gulp.task("bundle-e2e-test", function(){
         .pipe(buffer())
         .pipe(gulp.dest(__dirname + "/bundled/test/e2e-test"));
 });
+
+gulp.task("run-unit-test", function(cb){
+   karma.start({
+    configFile : __dirname + "/karma.conf.js",
+    singleRun: true
+  }, cb);
+});
+
+gulp.task("run", function(cb){
+     runSequence(
+    ["build-source", "build-test"],
+    ["bundle-source", "bundle-test", "bundle-e2e-test"],
+    ["run-unit-test"],
+    cb);
+});

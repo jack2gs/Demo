@@ -1,0 +1,10 @@
+{
+  "name": "app",
+  "dependencies": {},
+  "globalDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20170217154556",
+    "jquery": "registry:dt/jquery#1.10.0+20170123093700",
+    "mocha": "registry:dt/mocha#2.2.5+20170204022515",
+    "sinon": "registry:dt/sinon#1.16.1+20161208163514"
+  }
+}

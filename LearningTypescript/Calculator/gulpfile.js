@@ -15,7 +15,7 @@ var gulp = require("gulp"),
     pkg = require(__dirname + "/package.json");
 
 var tsProject = tsc.createProject({
-    removeComment: false,
+    removeComments: false,
     noImplicitAny: false,
     target: "ES5",
     module: "commonjs",
@@ -29,7 +29,7 @@ gulp.task("build-source", function(){
 });
 
 var tsTestProject = tsc.createProject({
-    removeComment: false,
+    removeComments: false,
     noImplicitAny: false,
     target: "ES5",
     module: "commonjs",
@@ -76,7 +76,7 @@ gulp.task("bundle-e2e-test", function(){
     return b.bundle()
         .pipe(source("e2e.test.js"))
         .pipe(buffer())
-        .pipe(gulp.dest(__dirname + "/bundled/test/e2e-test"));
+        .pipe(gulp.dest(__dirname + "/bundled/e2e-test"));
 });
 
 gulp.task("run-unit-test", function(cb){
@@ -85,6 +85,28 @@ gulp.task("run-unit-test", function(cb){
     singleRun: true
   }, cb);
 });
+
+gulp.task('run-e2e-test', function(){
+    return gulp.src()
+        .pipe(nightwatch({
+            configFile: __dirname + "/nightwatch.json"
+        }));
+});
+
+gulp.task("serve", function(cb){
+    browserSync({
+        port: 8080,
+        server:{
+            baseDir: "./"
+        }
+    });
+    gulp.watch([
+        "./**/*.js",
+        "./**/*.css",
+        "./index.html"
+    ], browserSync.reload, cb);
+});
+
 
 gulp.task("run", function(cb){
      runSequence(

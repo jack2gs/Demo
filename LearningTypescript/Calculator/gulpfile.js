@@ -115,3 +115,5 @@ gulp.task("run", function(cb){
     ["run-unit-test"],
     cb);
 });
+
+gulp.task("build", ["build-source", "build-test", "bundle-source", "bundle-test", "run-unit-test"]);

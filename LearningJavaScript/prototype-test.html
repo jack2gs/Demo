@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>JS prototype test</title>
+        <script>
+            function Person(name){
+                this.name=name;
+            }
+            function Student(name, age){
+                this.age =  age;
+            }
+            Student.prototype = new Person("");
+
+            var student = new Student("Jack Gao", 12);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

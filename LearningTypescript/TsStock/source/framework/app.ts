@@ -28,3 +28,5 @@ class App{
         this._mediator.publish(new AppEvent("app.initialize", null, null));
     }
 }
+
+export { App };

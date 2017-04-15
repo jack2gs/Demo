@@ -45,3 +45,18 @@ interface IRouter {
 interface IDispatcher{
     initialize(): void;
 }
+
+interface IController{
+    initialize(): void;
+    dispose(): void;
+}
+
+interface IModel{
+    initialize(): void;
+    dispose(): void;
+}
+
+interface IView {
+    initialize(): void;
+    dispose(): void;
+}
